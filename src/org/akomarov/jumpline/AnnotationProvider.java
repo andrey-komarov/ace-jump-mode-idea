@@ -8,6 +8,7 @@ import com.intellij.openapi.editor.colors.EditorFontType;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
