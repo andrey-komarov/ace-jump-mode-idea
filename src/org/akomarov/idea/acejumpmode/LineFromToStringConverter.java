@@ -1,11 +1,11 @@
-package org.akomarov.jumpline;
+package org.akomarov.idea.acejumpmode;
 
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LineFromToStringConverter {
+class LineFromToStringConverter {
     private final static StringBuilder ALPHABET_BUILDER = new StringBuilder();
     private final static Map<Character, Integer> SYMBOL_TO_INDEX = new HashMap<>();
     static {
@@ -20,7 +20,7 @@ public class LineFromToStringConverter {
     }
     private final static String ALPHABET = ALPHABET_BUILDER.toString();
 
-    static String fromNum(int x) {
+    private static String fromNum(int x) {
         if (0 <= x && x < ALPHABET.length()) {
             return "" + ALPHABET.charAt(x);
         } else {
@@ -28,12 +28,12 @@ public class LineFromToStringConverter {
         }
     }
 
-    public String fromLineNo(int i) {
+    String fromLineNo(int i) {
         return fromNum(i - visualLineStart);
     }
 
     @Nullable
-    public static Integer fromString(String s) {
+    private static Integer fromString(String s) {
         if (s.length() == 1) {
             return SYMBOL_TO_INDEX.get(s.charAt(0));
         } else {
@@ -42,7 +42,7 @@ public class LineFromToStringConverter {
     }
 
     @Nullable
-    public Integer fromStringToLineNo(String s) {
+    Integer fromStringToLineNo(String s) {
         Integer res = fromString(s);
         if (res == null) {
             return null;

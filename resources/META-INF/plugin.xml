@@ -2,16 +2,14 @@
   <id>org.akomarov.idea.acejumpmode</id>
   <name>Ace Jump Mode</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <!--<vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>-->
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Fast jump to any text position.<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      One-letter jumps work.<br>
     ]]>
   </change-notes>
 
@@ -20,29 +18,14 @@
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
-  <!-- uncomment to enable plugin in all products
   <depends>com.intellij.modules.lang</depends>
-  -->
 
   <extensions defaultExtensionNs="com.intellij">
 
   </extensions>
 
-  <application-components>
-    <component>
-      <implementation-class>
-        org.akomarov.jumpline.AceJumpLineMode
-      </implementation-class>
-    </component>
-  </application-components>
-
   <actions>
-    <!-- Add your actions here -->
-    <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
-        <add-to-group group-id="MainMenu" anchor="last"  />
-        <action id="AceJumpLine.Textboxes" class="org.akomarov.jumpline.TextBoxes" text="Text _Boxes" description="A test menu item" />
-        <action class="org.akomarov.jumpline.AceJumpLine" id="AceJumpLine.Jump" text="ace-jump-line-mode" description="lol"/>
-    </group>
+    <action class="org.akomarov.idea.acejumpmode.AceJumpLineMode" id="AceJumpLine.Jump" text="ace-jump-line-mode" description="lol"/>
   </actions>
 
 </idea-plugin>

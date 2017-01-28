@@ -1,19 +1,13 @@
-package org.akomarov.jumpline;
+package org.akomarov.idea.acejumpmode;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.*;
 import com.intellij.openapi.editor.actionSystem.*;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-
-public class AceJumpLine extends EditorAction {
-    public AceJumpLine() {
-        this(new Handler());
-    }
-
-    protected AceJumpLine(EditorActionHandler handler) {
-        super(handler);
+public class AceJumpLineMode extends EditorAction {
+    public AceJumpLineMode() {
+        super(new Handler());
     }
 
     private static class Handler extends EditorActionHandler {

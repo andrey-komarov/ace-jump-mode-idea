@@ -1,4 +1,4 @@
-package org.akomarov.jumpline;
+package org.akomarov.idea.acejumpmode;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
@@ -13,9 +13,9 @@ public class AceJumpLineModeHandler implements TypedActionHandler {
     private final TypedActionHandler mySavedRawHandler;
     private final LineFromToStringConverter myConverter;
 
-    public AceJumpLineModeHandler(TypedAction myAction,
-                                  TypedActionHandler mySavedRawHandler,
-                                  LineFromToStringConverter myConverter) {
+    AceJumpLineModeHandler(TypedAction myAction,
+                           TypedActionHandler mySavedRawHandler,
+                           LineFromToStringConverter myConverter) {
         this.myAction = myAction;
         this.mySavedRawHandler = mySavedRawHandler;
         this.myConverter = myConverter;
@@ -25,10 +25,11 @@ public class AceJumpLineModeHandler implements TypedActionHandler {
     public void execute(@NotNull Editor editor, char c, @NotNull DataContext dataContext) {
         myAction.setupRawHandler(mySavedRawHandler);
         editor.getGutter().closeAllAnnotations();
-        Integer lineNo = myConverter.fromString("" + c);
+        Integer lineNo = myConverter.fromStringToLineNo("" + c);
         if (lineNo != null) {
             int column = editor.getCaretModel().getLogicalPosition().column;
-            LogicalPosition position = new LogicalPosition(lineNo, column);
+            VisualPosition visualPosition = new VisualPosition(lineNo, column);
+            LogicalPosition position = editor.visualToLogicalPosition(visualPosition);
             editor.getCaretModel().moveToLogicalPosition(position);
         }
     }
