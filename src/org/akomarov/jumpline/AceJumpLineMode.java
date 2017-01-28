@@ -2,6 +2,7 @@ package org.akomarov.jumpline;
 
 import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.editor.actionSystem.TypedAction;
+import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class AceJumpLineMode implements com.intellij.openapi.components.ApplicationComponent {
@@ -9,8 +10,6 @@ public class AceJumpLineMode implements com.intellij.openapi.components.Applicat
 
     @Override
     public void initComponent() {
-        EditorActionManager manager = EditorActionManager.getInstance();
-        TypedAction typedAction = manager.getTypedAction();
     }
 
     @Override

@@ -13,37 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 class AnnotationProvider implements TextAnnotationGutterProvider {
-    private final static StringBuilder ALPHABET_BUILDER = new StringBuilder();
-    static {
-        for (char ch = 'a'; ch <= 'z'; ch++) {
-            ALPHABET_BUILDER.append(ch);
-        }
-        for (char ch = 'A'; ch <= 'Z'; ch++) {
-            ALPHABET_BUILDER.append(ch);
-        }
-    }
-    private final static String ALPHABET = ALPHABET_BUILDER.toString();
+    private final LineFromToStringConverter converter;
 
-    static String fromNum(int x) {
-        if (0 <= x && x < ALPHABET.length()) {
-            return "" + ALPHABET.charAt(x);
-        } else {
-            return "?";
-        }
-
-    }
-
-    private final int visualLineStart;
-
-    public AnnotationProvider(int visualLineStart) {
-        this.visualLineStart = visualLineStart;
+    AnnotationProvider(LineFromToStringConverter converter) {
+        this.converter = converter;
     }
 
     @Nullable
     @Override
     public String getLineText(int i, Editor editor) {
-        int x = i - visualLineStart;
-        return fromNum(x);
+        return converter.fromLineNo(i);
     }
 
     @Nullable
